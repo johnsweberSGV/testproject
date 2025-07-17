@@ -12,22 +12,29 @@
     <div id="auth-section">
       <div id="login-form" class="mb-4">
         <h2 class="text-lg font-semibold mb-2">Login</h2>
-        <input id="login-email" type="email" placeholder="Email" class="w-full p-2 border rounded mb-2" />
-        <input id="login-password" type="password" placeholder="Password" class="w-full p-2 border rounded mb-2" />
-        <button id="login-btn" class="bg-blue-500 text-white px-4 py-2 rounded w-full">Login</button>
+        <form id="login-form-el">
+          <input id="login-email" type="email" placeholder="Email" class="w-full p-2 border rounded mb-2" />
+          <input id="login-password" type="password" placeholder="Password" class="w-full p-2 border rounded mb-2" />
+          <button type="submit" id="login-btn" class="bg-blue-500 text-white px-4 py-2 rounded w-full">Login</button>
+        </form>
         <p class="text-sm mt-2">Don't have an account? <a href="#" id="show-register" class="text-blue-600 underline">Register</a></p>
       </div>
       <div id="register-form" class="mb-4 hidden">
         <h2 class="text-lg font-semibold mb-2">Register</h2>
-        <input id="register-firstname" type="text" placeholder="First Name" class="w-full p-2 border rounded mb-2" />
-        <input id="register-lastname" type="text" placeholder="Last Name" class="w-full p-2 border rounded mb-2" />
-        <input id="register-birthday" type="date" placeholder="Birthday" class="w-full p-2 border rounded mb-2" />
-        <input id="register-email" type="email" placeholder="Email" class="w-full p-2 border rounded mb-2" />
-        <input id="register-password" type="password" placeholder="Password" class="w-full p-2 border rounded mb-2" />
-        <button id="register-btn" class="bg-green-500 text-white px-4 py-2 rounded w-full">Register</button>
+        <form id="register-form-el">
+          <input id="register-firstname" type="text" placeholder="First Name" class="w-full p-2 border rounded mb-2" />
+          <input id="register-lastname" type="text" placeholder="Last Name" class="w-full p-2 border rounded mb-2" />
+          <input id="register-birthday" type="date" placeholder="Birthday" class="w-full p-2 border rounded mb-2" />
+          <input id="register-email" type="email" placeholder="Email" class="w-full p-2 border rounded mb-2" />
+          <input id="register-password" type="password" placeholder="Password" class="w-full p-2 border rounded mb-2" />
+          <button type="submit" id="register-btn" class="bg-green-500 text-white px-4 py-2 rounded w-full">Register</button>
+        </form>
         <p class="text-sm mt-2">Already have an account? <a href="#" id="show-login" class="text-blue-600 underline">Login</a></p>
       </div>
       <div id="auth-message" class="text-center text-red-500 mb-2"></div>
+    </div>
+    <div class="flex justify-center mb-4">
+      <div id="selected-mood-header" class="hidden cursor-pointer"></div>
     </div>
     <div id="main-section" class="hidden">
       <div class="flex justify-between items-center mb-4">
@@ -35,12 +42,10 @@
         <button id="logout-btn" class="bg-gray-300 text-gray-800 px-2 py-1 rounded text-sm">Logout</button>
       </div>
       <div class="mb-4" id="mood-section">
-        <label for="mood" class="block mb-2 font-semibold">Select your mood:</label>
-        <select id="mood" class="w-full p-2 border rounded">
-          <option value="">Loading moods...</option>
-        </select>
+        <label class="block mb-2 font-semibold">Select your mood:</label>
+        <div id="mood-tiles" class="grid grid-cols-2 gap-4"></div>
       </div>
-      <div class="grid grid-cols-3 gap-4 mb-4" id="options-icons">
+      <div class="grid grid-cols-3 gap-4 mb-4 hidden" id="options-icons">
         <button id="view-recipe" class="flex flex-col items-center justify-center bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-xl p-4 shadow transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h9" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m0 0H3m9 0a9 9 0 100-18 9 9 0 000 18z" /></svg>
           <span class="text-xs font-semibold">Recipe</span>
@@ -64,7 +69,9 @@
         <button id="new-horoscope" class="bg-purple-500 text-white px-4 py-2 rounded w-full mt-4">Show me another horoscope</button>
       </div>
       <div id="recipe" class="my-6 hidden">
-        <h2 class="text-xl font-semibold mb-2" id="recipe-title"></h2>
+        <img id="recipe-img" class="rounded-xl w-48 h-48 object-cover mx-auto mb-4 shadow border-4 border-yellow-200" style="display:none;" />
+        <h2 class="text-xl font-bold mb-2 text-yellow-900 font-cursive" id="recipe-title"></h2>
+        <div id="recipe-flavor" class="italic text-gray-600 mb-2 text-center px-2"></div>
         <p class="mb-1"><span class="font-semibold">Ingredients:</span> <span id="recipe-ingredients"></span></p>
         <p class="mb-1"><span class="font-semibold">Instructions:</span> <span id="recipe-instructions"></span></p>
         <button id="new-recipe" class="bg-blue-500 text-white px-4 py-2 rounded w-full mt-4">Show me another recipe</button>
